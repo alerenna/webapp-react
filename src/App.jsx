@@ -1,10 +1,26 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import DefaultLayout from '../layout/DefaultLayout'
+import Homepage from './pages/Homepage'
+import SingleMovie from './pages/SingleMovie'
 
 
 function App() {
 
   return (
     <>
-      <h1>START</h1>
+      <BrowserRouter>
+        <Routes>
+
+          <Route element={<DefaultLayout />}>
+
+            <Route element={<Homepage />} />
+            <Route element={<SingleMovie />} />
+
+          </Route>
+
+        </Routes>
+
+      </BrowserRouter >
     </>
   )
 }
