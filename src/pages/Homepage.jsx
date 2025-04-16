@@ -20,13 +20,26 @@ export default function Hompepage() {
         <>
             <div className="container">
                 <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-3">
-                    <div className="col">
-                        <div className="card">
-                            <div className="card-body">
 
+                    {
+                        movies.map(movie => (
+                            <div className="col" key={`movie-${movie.id}`}>
+                                <div className="card">
+                                    <div className="card-header">
+                                        <h2>{movie.title}</h2>
+                                    </div>
+                                    <div className="card-body">
+                                        <h5>{movie.director}</h5>
+                                        <p>{movie.abstract}</p>
+
+
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
+                        ))
+                    }
+
+
                 </div>
             </div>
         </>
