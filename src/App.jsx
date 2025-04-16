@@ -13,8 +13,8 @@ function App() {
 
           <Route element={<DefaultLayout />}>
 
-            <Route element={<Homepage />} />
-            <Route element={<SingleMovie />} />
+            <Route path='/' index element={<Homepage />} />
+            <Route path='/movies/:id' element={<SingleMovie />} />
 
           </Route>
 
