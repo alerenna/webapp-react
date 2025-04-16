@@ -30,6 +30,8 @@ export default function SingleMovie() {
                                 <p className="col-md-8 fs-4">
                                     {movie?.abstract}
                                 </p>
+
+                                <span>Director: {movie.director}</span>
                             </div>
 
                             <img className="col-4" src={`http://localhost:3005/images/${movie?.image}`} alt="" style={{ width: '250px' }} />
@@ -50,7 +52,18 @@ export default function SingleMovie() {
 
                                         <div className="vote">
                                             <h5>Vote</h5>
-                                            <div>{review.vote}</div>
+                                            <div>{(() => {
+                                                const stars = []
+                                                for (let i = 1; i <= 5; i++) {
+                                                    stars.push(
+                                                        <i
+                                                            key={i}
+                                                            className={`bi ${i <= review.vote ? 'bi-star-fill text-warning' : 'bi-star text-muted'}`}
+                                                        ></i>
+                                                    )
+                                                }
+                                                return <div>{stars}</div>
+                                            })()}</div>
                                         </div>
 
                                     </div>
@@ -58,7 +71,7 @@ export default function SingleMovie() {
                                         <p>{review.text}</p>
                                     </div>
                                     <div className="card-footer">
-
+                                        <div>Reviewed on: {review.created_at}</div>
                                     </div>
                                 </div>
                             </div>

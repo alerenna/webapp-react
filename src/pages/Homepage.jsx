@@ -30,15 +30,15 @@ export default function Hompepage() {
                         {
                             movies.map(movie => (
                                 <div className="col" key={`movie-${movie.id}`}>
-                                    <Link to={`/movies/${movie.id}`} >
+                                    <Link to={`/movies/${movie.id}`} style={{ textDecoration: 'none' }} >
 
-                                        <div className="card">
-                                            <div className="card-header">
+                                        <div className="card h-100">
+                                            <div className="card-header h-100">
                                                 <img className="card-img-top" src={`http://localhost:3005/images/${movie.image}`} alt={movie.title} />
 
                                             </div>
 
-                                            <div className="card-body">
+                                            <div className="card-body movie-details">
                                                 <h2>{movie.title}</h2>
                                                 <h5>{movie.director}</h5>
                                                 <p>{movie.abstract}</p>
