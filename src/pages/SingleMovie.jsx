@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
+import FormReviews from "../../components/reviews/FormReviews"
 
 export default function SingleMovie() {
     const [movie, setMovie] = useState(null)
@@ -39,11 +40,15 @@ export default function SingleMovie() {
                     </div>
                 </div>
 
+                <div className="container mb-5">
+                    <FormReviews movieId={id} />
+                </div>
+
                 <div className="container">
-                    <div className="row">
+                    <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-3">
                         {movie.review.map((review, index) => (
                             <div key={`review-${index}`} className="col">
-                                <div className="card">
+                                <div className="card h-100">
                                     <div className="card-header d-flex align-items-center justify-content-between gap-2">
                                         <div className="username">
                                             <h5>Username</h5>
@@ -71,7 +76,7 @@ export default function SingleMovie() {
                                         <p>{review.text}</p>
                                     </div>
                                     <div className="card-footer">
-                                        <div>Reviewed on: {review.created_at}</div>
+                                        <div>Reviewed on: {new Date(review.created_at).toLocaleString()}</div>
                                     </div>
                                 </div>
                             </div>
