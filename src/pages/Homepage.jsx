@@ -1,21 +1,33 @@
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
+import { useContext } from "react"
+import { GlobalContext } from "../contexts/GlobalContext"
 
-export default function Hompepage() {
+
+export default function Homepage() {
     const [movies, setMovies] = useState([])
+    const { setIsLoading } = useContext(GlobalContext);
 
     useEffect(() => {
-        fetch('http://localhost:3005/api/v1/movies')
+        console.log("Homepage mounted");
+        setIsLoading(true);
 
+        fetch('http://localhost:3005/api/v1/movies')
             .then(res => res.json())
             .then(data => {
-                setMovies(data)
+                setTimeout(() => {
+                    setMovies(data);
+                    console.log("Fetched movies:", data);
+                    setIsLoading(false);
+                }, 2000);
             })
             .catch(err => {
                 console.log(err);
+                setIsLoading(false);
+            });
+    }, []);
 
-            })
-    }, [])
+
 
     return (
         <>
